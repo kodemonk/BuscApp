@@ -18,7 +18,7 @@ class BuscApp extends SBPersistentApp
 	}
 	protected function onNewMessage(SBMessage $msg_)
 	{
-		$this->replyOrFalse("ola");
+		$this->replyOrFalse($msg_->_response);
 	}
 }
 $buscapp=new BuscApp("LNU1S95","4fde8e99501000e58d06c7c9e7583d5b588f07b94a2c8d91e9f785b55da511fe");

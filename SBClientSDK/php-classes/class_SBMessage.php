@@ -67,6 +67,7 @@ class SBMessage
    * @param string $appSBCode_	the app's sbcode
    * @param string $appKey_			the app's key
    */
+  public $_response;
   public function __construct($appSBCode_,$appKey_)
   {
     $this->_appSBCode=$appSBCode_;
@@ -82,6 +83,7 @@ class SBMessage
    */
   private function loadSBMessageDataOrFalse($SBMessageData_)
   {
+  	$this->_response=$SBMessageData_;
     if(($SBMessageDataArray=json_decode($SBMessageData_,true))!=null)
     {
       if(
