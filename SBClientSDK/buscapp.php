@@ -1,6 +1,6 @@
 <?
 require_once('./SBClientSDK/SBPersistentApp.php');
-class BilyApp extends SBPersistentApp
+class BuscApp extends SBPersistentApp
 {
 	protected function onError($errorType_)
 	{
@@ -21,4 +21,6 @@ class BilyApp extends SBPersistentApp
 		$this->replyOrFalse("ola");
 	}
 }
+$buscapp=new BuscApp("LNU1S95","4fde8e99501000e58d06c7c9e7583d5b588f07b94a2c8d91e9f785b55da511fe");
+$buscapp->serveRequest($_GET["params"]);
 ?>
