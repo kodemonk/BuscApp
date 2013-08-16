@@ -61,6 +61,11 @@ class SBMessage
    * Message's initialization status
    * @var boolean
    */
+  private $_attachmentFullData;
+  /**
+   * Message's attachments extended data
+   * @var boolean
+   */
   private $_SBMessageInitialized;
   /**
    * Creates a new instance of SBMessage, keeping it uninitialized until the message is loaded
@@ -121,6 +126,7 @@ class SBMessage
                                     $SBMessageDataArray["V1"]["userRating"]
                                    );
         $this->loadAttachmentRefsOrFalse();
+        $this->_attachmentFullData=isset($SBMessageDataArray[V2])?json_decode($SBMessageDataArray["V2"],true):array();
         return ($this->_SBMessageInitialized=true);
       }
     }
@@ -268,6 +274,14 @@ class SBMessage
   public function getSBMessageFromUserOrFalse()
   {
     return $this->isDataLoaded()?$this->_fromUser:false;  
+  }
+  /**
+  * Gets message's creator
+  * @return SBUser an instance of SBUser or false if message data was not loaded
+  */
+  public function getAttachmentsFullDataOrFalse()
+  {
+  	return $this->isDataLoaded()?$this->_attachmentFullData:false;
   }
 }
 ?> 
