@@ -44,10 +44,9 @@ class BuscApp extends SBPersistentApp
 				shuffle($results);
 				foreach ($results as $result)
 				{
-					$this->replyOrFalse(substr($result,-32));
 					if(strlen($result>32))
 					{
-						$this->addAttachmentRef(substr($result, -32));
+						$this->_SBAttachments->addAttachmentRef(substr($result, -32));
 					}
 				}
 				$this->replyOrFalse("Resultados para <<".$msg_->getSBMessageTextOrFalse().">>");				
