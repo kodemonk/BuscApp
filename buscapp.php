@@ -39,7 +39,7 @@ class BuscApp extends SBPersistentApp
 		{
 			//Es una busqueda
 			$query=strtolower($msg_->getSBMessageTextOrFalse());
-			if(($results=$this->keysOrFalse($query))!=false)
+			if(($results=$this->keysOrFalse($query."_"))!=false)
 			{
 				shuffle($results);
 				$this->replyOrFalse(print_r($results,true));				
