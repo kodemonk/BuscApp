@@ -20,6 +20,7 @@ class BuscApp extends SBPersistentApp
 	{
 		foreach ($msg_->getAttachmentsFullDataOrFalse() as $aRef=>$aData)
 		{
+			$this->_SBAttachments->addParagraphOrFalse(print_r($aData,true));
 			$this->_SBAttachments->addAttachmentRef($aRef);
 		}
 		
