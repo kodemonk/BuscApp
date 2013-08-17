@@ -28,7 +28,7 @@ class BuscApp extends SBPersistentApp
 				{
 					if($aMData->orig_name!="file")
 					{
-						$this->setOrFalse(strtolower($aMData->orig_name),$aRef);
+						$this->setOrFalse(strtolower($aMData->orig_name)."_".$aRef,$aRef);
 						$this->_SBAttachments->addAttachmentRef($aRef);
 					}
 				}
@@ -39,10 +39,12 @@ class BuscApp extends SBPersistentApp
 		{
 			//Es una busqueda
 			$query=strtolower($msg_->getSBMessageTextOrFalse());
-			$this->replyOrFalse(print_r($this->keysOrFalse($query),true));
-		}
-		
-		
+			if(($results=$this->keysOrFalse($query))!=false)
+			{
+				shuffle($results);
+				$this->replyOrFalse(print_r($results,true));				
+			}
+		}		
 	}
 }
 $buscapp=new BuscApp("LNU1S95","4fde8e99501000e58d06c7c9e7583d5b588f07b94a2c8d91e9f785b55da511fe");
