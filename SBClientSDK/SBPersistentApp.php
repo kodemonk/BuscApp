@@ -69,7 +69,6 @@ abstract class SBPersistentApp extends SBApp
 				return true;
 			}
 			catch (Exception $e) {
-				error_log(print_r($e,true));
 				return false;
 			}
 		}
@@ -381,13 +380,13 @@ abstract class SBPersistentApp extends SBApp
 	* @param string $query_
 	* @return mixed|false	the value or false if any error occurs
 	*/
-	public function keysOrFalse($key_,$query_)
+	public function keysOrFalse($query_)
 	{
 		if($this->isRDBConnectionOk() && (strlen($this->_appSBCode)>0) && is_string($key_) && (strlen($key_)>0))
 		{
 			try
 			{
-				return $this->_rClient->keys($this->_appSBCode."_".$key_,"*".$query_."*");
+					return strlen($query > 2)?$this->_rClient->keys($this->_appSBCode."*".$query_."*"):false;
 			}
 			catch (Exception $e) {
 				return false;
