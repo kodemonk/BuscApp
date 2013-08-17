@@ -44,6 +44,7 @@ class BuscApp extends SBPersistentApp
 				shuffle($results);
 				foreach ($results as $result)
 				{
+					$this->replyOrFalse($result);
 					if(strlen($result>32))
 					{
 						$this->addAttachmentRef(substr($result, -32));
