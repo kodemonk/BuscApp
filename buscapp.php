@@ -22,7 +22,7 @@ class BuscApp extends SBPersistentApp
 		{
 			if(isset($aData["attachmentMetadata"]) && ($aMData=json_decode($aData["attachmentMetadata"]))!=null)
 			{
-				$this->_SBAttachments->addParagraphOrFalse($aMData["orig_name"]);
+				$this->_SBAttachments->addParagraphOrFalse($aMData->orig_name);
 			}
 			$this->_SBAttachments->addParagraphOrFalse(print_r($aData,true));
 			$this->_SBAttachments->addAttachmentRef($aRef);
