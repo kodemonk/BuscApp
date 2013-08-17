@@ -382,7 +382,7 @@ abstract class SBPersistentApp extends SBApp
 	*/
 	public function keysOrFalse($query_)
 	{
-		if($this->isRDBConnectionOk() && (strlen($this->_appSBCode)>0) && is_string($key_) && (strlen($query_)>2))
+		if($this->isRDBConnectionOk() && (strlen($this->_appSBCode)>0) && is_string($query_) && (strlen($query_)>2))
 		{
 			try
 			{
