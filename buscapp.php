@@ -18,17 +18,30 @@ class BuscApp extends SBPersistentApp
 	}
 	protected function onNewMessage(SBMessage $msg_)
 	{
-		foreach ($msg_->getAttachmentsFullDataOrFalse() as $aRef=>$aData)
+		$allAData=$msg_->getAttachmentsFullDataOrFalse();
+		if(count($allAData))
 		{
-			if(isset($aData["attachmentMetadata"]) && ($aMData=json_decode($aData["attachmentMetadata"]))!=null)
+			//Es una indexacion
+			foreach ($allAData as $aRef=>$aData)
 			{
-				$this->_SBAttachments->addParagraphOrFalse($aMData->orig_name);
+				if(isset($aData["attachmentMetadata"]) && ($aMData=json_decode($aData["attachmentMetadata"]))!=null)
+				{
+					if($aMData->orig_name!="file")
+					{
+						$this->saddOrFalse("attachmentRefDB",json_encode(array($aMData->orig_name,$aRef)));
+						$this->_SBAttachments->addAttachmentRef($aRef);
+					}
+				}
 			}
-			$this->_SBAttachments->addParagraphOrFalse(print_r($aData,true));
-			$this->_SBAttachments->addAttachmentRef($aRef);
+			$this->replyOrFalse("Gracias! Los siguientes ficheros quedan Indexados en el buscador");
+		}
+		else
+		{
+			//Es una busqueda
+			$this->replyOrFalse($this->keysOrFalse("attachmentRefDB",$msg_->getSBMessageTextOrFalse());
 		}
 		
-		$this->replyOrFalse("Esto es lo que has adjuntado");
+		
 	}
 }
 $buscapp=new BuscApp("LNU1S95","4fde8e99501000e58d06c7c9e7583d5b588f07b94a2c8d91e9f785b55da511fe");

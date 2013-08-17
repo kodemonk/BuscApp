@@ -374,5 +374,25 @@ abstract class SBPersistentApp extends SBApp
 		}
 		return false;
 	}
+	/**
+	* Returns all keys matching pattern under set $key_
+	* @param string $key_
+	* @param string $query_
+	* @return mixed|false	the value or false if any error occurs
+	*/
+	public function keysOrFalse($key_,$query_)
+	{
+		if($this->isRDBConnectionOk() && (strlen($this->_appSBCode)>0) && is_string($key_) && (strlen($key_)>0))
+		{
+			try
+			{
+				return $this->_rClient->keys($this->_appSBCode."_".$key_,"*".$query_."*");
+			}
+			catch (Exception $e) {
+				return false;
+			}
+		}
+		return false;
+	}
 }
 ?>
