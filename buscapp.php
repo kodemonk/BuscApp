@@ -42,7 +42,14 @@ class BuscApp extends SBPersistentApp
 			if(($results=$this->keysOrFalse($query))!=false)
 			{
 				shuffle($results);
-				$this->replyOrFalse(print_r($results,true));				
+				foreach ($results as $result)
+				{
+					if(strlen($result>32))
+					{
+						$this->addAttachmentRef(substr($result, -32));
+					}
+				}
+				$this->replyOrFalse("Resultados para <<".$msg_->getSBMessageTextOrFalse().">>");				
 			}
 		}		
 	}
