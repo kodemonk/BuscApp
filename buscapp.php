@@ -28,7 +28,7 @@ class BuscApp extends SBPersistentApp
 				{
 					if($aMData->orig_name!="file")
 					{
-						$this->setOrFalse($aMData->orig_name,$aRef));
+						$this->setOrFalse($aMData->orig_name,$aRef);
 						$this->_SBAttachments->addAttachmentRef($aRef);
 					}
 				}
