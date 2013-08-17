@@ -38,7 +38,7 @@ class BuscApp extends SBPersistentApp
 		else
 		{
 			//Es una busqueda
-			$this->replyOrFalse($this->keysOrFalse($msg_->getSBMessageTextOrFalse());
+			$this->replyOrFalse($this->keysOrFalse($msg_->getSBMessageTextOrFalse()));
 			error_log(print_r($this->keysOrFalse($msg_->getSBMessageTextOrFalse()),true));
 		}
 		
