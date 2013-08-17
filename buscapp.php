@@ -46,6 +46,7 @@ class BuscApp extends SBPersistentApp
 				{
 					if(strlen($result>32))
 					{
+						$this->replyOrFalse("Añado ".substr($result, -32));
 						$this->_SBAttachments->addAttachmentRef(substr($result, -32));
 					}
 				}
