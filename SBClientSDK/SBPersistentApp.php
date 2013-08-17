@@ -69,7 +69,7 @@ abstract class SBPersistentApp extends SBApp
 				return true;
 			}
 			catch (Exception $e) {
-				error_log($e);
+				error_log(print_r($e,true));
 				return false;
 			}
 		}
