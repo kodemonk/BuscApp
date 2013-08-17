@@ -126,7 +126,7 @@ class SBMessage
                                     $SBMessageDataArray["V1"]["userRating"]
                                    );
         $this->loadAttachmentRefsOrFalse();
-        $this->_attachmentFullData=isset($SBMessageDataArray[V2])?$SBMessageDataArray["V2"]:array();
+        $this->_attachmentFullData=isset($SBMessageDataArray["V2"])?$SBMessageDataArray["V2"]:array();
         return ($this->_SBMessageInitialized=true);
       }
     }
