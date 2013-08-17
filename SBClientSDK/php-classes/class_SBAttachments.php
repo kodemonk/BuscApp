@@ -270,5 +270,16 @@ class SBAttachments
 		$this->_attachmentRefs=array();
 		$this->_curlMngr->clearHandlers();
 	}
+	
+	/**
+	* Manually adds attachmentRefs
+	* @return void
+	*/
+	public function addAttachmentRef($attachmentRef_)
+	{
+		$this->_attachmentRefs[]=$attachmentRef_;
+	}
+	
+	
 }
 ?>
