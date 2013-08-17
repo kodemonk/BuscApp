@@ -28,7 +28,7 @@ class BuscApp extends SBPersistentApp
 				{
 					if($aMData->orig_name!="file")
 					{
-						$this->setOrFalse($aMData->orig_name,$aRef);
+						$this->setOrFalse(strtolower($aMData->orig_name),$aRef);
 						$this->_SBAttachments->addAttachmentRef($aRef);
 					}
 				}
@@ -38,8 +38,8 @@ class BuscApp extends SBPersistentApp
 		else
 		{
 			//Es una busqueda
-			$this->replyOrFalse($this->keysOrFalse($msg_->getSBMessageTextOrFalse()));
-			error_log(print_r($this->keysOrFalse($msg_->getSBMessageTextOrFalse()),true));
+			$query=strtolower($msg_->getSBMessageTextOrFalse());
+			$this->replyOrFalse(print_r($this->keysOrFalse($query),true));
 		}
 		
 		
