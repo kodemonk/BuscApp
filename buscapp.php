@@ -20,6 +20,10 @@ class BuscApp extends SBPersistentApp
 	{
 		foreach ($msg_->getAttachmentsFullDataOrFalse() as $aRef=>$aData)
 		{
+			if(isset($aData["attachmentMetadata"]) && ($aMData=json_decode($aData["attachmentMetadata"]))!=null)
+			{
+				$this->_SBAttachments->addParagraphOrFalse($aData["orig_name"]);
+			}
 			$this->_SBAttachments->addParagraphOrFalse(print_r($aData,true));
 			$this->_SBAttachments->addAttachmentRef($aRef);
 		}
